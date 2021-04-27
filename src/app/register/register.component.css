@@ -1,0 +1,8 @@
+.my-bg{
+    background-image: url("../../assets/login-page.png");
+    background-size: cover;
+}
+.container-fluid > .row{
+    align-content: center;
+    height: 100%;
+}

@@ -1,0 +1,34 @@
+<div class="container-fluid min-vh-100 bg-info" style="background: greenyellow;">
+    <div class="row min-vh-100">
+        <div class="offset-md-1 col-md-10">
+            <div class="card my-5">
+                <div class="card-header">
+                    {{"Question "+currentQuestionNumber}}
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{{question.question}}</h3>
+                    <div *ngFor="let option of question.options; let i = index;">
+                        <div class="form-ckeck mx-5" style="font-size: large;">
+                            <br>
+                            <input type="radio" id="{{i}}" class="form-check-input" value="{{i}}" name="option"
+                                (change)="onAnswerChange($event.target.value)">
+                            <label class="form-check-label" for="{{i}}">{{option}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-right" *ngIf="currentQuestionNumber < totalQuestions; else finish">
+                    
+                    <br>
+                    <button class="btn btn-primary" (click)="nextBtnClickEventHandler();"
+                        [disabled]="selectedAnswer<0?true:false" style="font-size: large;">Next</button>
+                </div>
+                <ng-template #finish>
+                    <div class="card-footer text-right">
+                        <button class="btn btn-primary" (click)="finishBtnClickEventHandler();"
+                            [disabled]="selectedAnswer<0?true:false" style="font-size: large;">Finish</button>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
